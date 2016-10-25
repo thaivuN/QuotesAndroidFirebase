@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1060197622595",
+    "firebase_url": "https://tttvictorthai.firebaseio.com",
+    "project_id": "tttvictorthai",
+    "storage_bucket": "tttvictorthai.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060197622595:android:67ff2d5a3f322640",
+        "android_client_info": {
+          "package_name": "com.quotes.com.qtnvrquotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1060197622595-g2pv9cdsjd41ufrel785pf3uujjvhva4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF55ZFcSoKBJQc45p0WDYVQzpjmczR1-0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
