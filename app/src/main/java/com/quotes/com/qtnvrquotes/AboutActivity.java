@@ -3,7 +3,7 @@ package com.quotes.com.qtnvrquotes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class AboutActivity extends AppCompatActivity {
+public class AboutActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -11,4 +11,6 @@ public class AboutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_about);
 
     }
+
+
 }

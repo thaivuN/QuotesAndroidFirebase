@@ -3,7 +3,7 @@ package com.quotes.com.qtnvrquotes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class QuoteActivity extends AppCompatActivity {
+public class QuoteActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

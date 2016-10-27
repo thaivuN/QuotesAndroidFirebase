@@ -7,6 +7,7 @@ import java.util.Date;
  */
 
 public class QuoteBean {
+    private String person;
     private String category;
     private String blurb;
     private String quote;
@@ -15,9 +16,11 @@ public class QuoteBean {
 
     public QuoteBean(){
 
+        this("","","", "", "", null);
     }
 
-    public QuoteBean(String category, String blurb, String quote, String reference, Date date){
+    public QuoteBean(String person, String category, String blurb, String quote, String reference, Date date){
+        this.person = person;
         this.category = category;
         this.blurb = blurb;
         this.quote = quote;
@@ -25,6 +28,13 @@ public class QuoteBean {
         this.date = date;
     }
 
+    public String getPerson() {
+        return person;
+    }
+
+    public void setPerson(String person) {
+        this.person = person;
+    }
     public String getCategory() {
         return category;
     }
@@ -64,4 +74,6 @@ public class QuoteBean {
     public void setReference(String reference) {
         this.reference = reference;
     }
+
+
 }
