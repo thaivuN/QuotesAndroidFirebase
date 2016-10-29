@@ -1,10 +1,8 @@
 package com.quotes.com.qtnvrquotes;
 
-import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -13,38 +11,36 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Logger;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.quotes.com.qtnvrquotes.adapters.CustomViewAdapter;
-import com.quotes.com.qtnvrquotes.beans.QuoteBean;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 public class MainActivity extends BaseActivity {
 
     private final static String TAG = MainActivity.class.getName();
     private FirebaseAuth.AuthStateListener mAuthListener;
+    protected List<String> categories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        categories = new ArrayList<>();
         setContentView(R.layout.activity_main);
         setUpAuthenticationListener();
         if (mFirebaseUser == null)
-            performAnonymousLogin();
-        loadCategories();
+            performBackEndLogin();
+
 
     }
 
     @Override
     public void onStart(){
         super.onStart();
-
+        loadCategories();
 
     }
 
@@ -65,7 +61,7 @@ public class MainActivity extends BaseActivity {
         };
     }
 
-    private void performAnonymousLogin(){
+    private void performBackEndLogin(){
         mFirebaseAuth.addAuthStateListener(mAuthListener);
         mFirebaseAuth.signInWithEmailAndPassword("thaivictor_quotes@admin.com", "evilquotesoflove").addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -99,6 +95,7 @@ public class MainActivity extends BaseActivity {
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                categories = new ArrayList<String>();
                 Log.i(TAG, "Data Snap - Getting the Categories" );
                 Log.i(TAG, "Data Snap Shot count - " + dataSnapshot.getChildrenCount());
 
