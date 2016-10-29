@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">QTNVRQuotes</string>
+    <string name="random_menu_error">Cannot launch this Feature.</string>
+    <string name="last_run_error">There is currently no last run</string>
 </resources>
