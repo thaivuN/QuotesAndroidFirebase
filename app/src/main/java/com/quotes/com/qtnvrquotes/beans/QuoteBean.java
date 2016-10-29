@@ -1,39 +1,37 @@
 package com.quotes.com.qtnvrquotes.beans;
 
-import java.util.Date;
-
 /**
  * Created by MDThai on 10/24/2016.
  */
 
 public class QuoteBean {
-    private String person;
+    private String attribution;
     private String category;
     private String blurb;
     private String quote;
-    private Date date;
-    private String reference;
+    private String date;
+    private String url;
 
     public QuoteBean(){
 
         this("","","", "", "", null);
     }
 
-    public QuoteBean(String person, String category, String blurb, String quote, String reference, Date date){
-        this.person = person;
+    public QuoteBean(String attribution, String category, String blurb, String quote, String url, String date){
+        this.attribution = attribution;
         this.category = category;
         this.blurb = blurb;
         this.quote = quote;
-        this.reference = reference;
+        this.url = url;
         this.date = date;
     }
 
-    public String getPerson() {
-        return person;
+    public String getAttribution() {
+        return attribution;
     }
 
-    public void setPerson(String person) {
-        this.person = person;
+    public void setAttribution(String attribution) {
+        this.attribution = attribution;
     }
     public String getCategory() {
         return category;
@@ -59,20 +57,20 @@ public class QuoteBean {
         this.quote = quote;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public String getReference() {
-        return reference;
+    public String getUrl() {
+        return url;
     }
 
-    public void setReference(String reference) {
-        this.reference = reference;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
 
