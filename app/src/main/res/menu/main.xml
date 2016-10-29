@@ -10,6 +10,11 @@
         android:title=""
         android:showAsAction="ifRoom"
         tools:ignore="AppCompatResource"></item>
+    <item
+        android:id="@+id/last_run_menu"
+        android:title=""
+        android:showAsAction="ifRoom"
+        tools:ignore="AppCompatResource"></item>
 
 
 </menu>
