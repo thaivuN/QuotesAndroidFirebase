@@ -28,7 +28,8 @@ import java.util.Map;
 import java.util.Random;
 
 /**
- * Created by MDThai on 10/24/2016.
+ *
+ * Created by Thai-Vu Nguyen on 10/24/2016.
  */
 
 public class CustomViewAdapter extends BaseAdapter {
@@ -37,6 +38,13 @@ public class CustomViewAdapter extends BaseAdapter {
     private DataSnapshot snapshot;
     String TAG = CustomViewAdapter.class.getName();
     private static LayoutInflater inflater;
+
+    /**
+     * Constructor
+     * @param mainActivity MainActivity
+     * @param categories List<String>
+     * @param snapshot DataSnapshot
+     */
     public CustomViewAdapter(MainActivity mainActivity, List<String> categories, DataSnapshot snapshot){
         this.context = mainActivity;
         this.categories = categories;
@@ -44,7 +52,6 @@ public class CustomViewAdapter extends BaseAdapter {
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
-
 
     @Override
     public int getCount() {
@@ -63,29 +70,46 @@ public class CustomViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
+
         View rowView = inflater.inflate(R.layout.category_list,null);
 
         TextView tv = (TextView) rowView.findViewById(R.id.categoryItem);
+
+        //Displaying the current category in the UI
         tv.setText(categories.get(position));
+
+        //Container of the list of Quotes in the current category
         final List<QuoteBean> quoteBeanList = new ArrayList<>();
 
 
-
-
+        /**
+         * Setting an onClickListener on the current row view
+         */
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "onClick(View view), view clicked, category is " + categories.get(position)  );
                 Log.i(TAG, "number of quotes in current Category list in onClick(): " + quoteBeanList.size());
-                //TO DO
-                //Intent intent = new Intent(context, QuoteActivity.class);
+                //Getting the random quote
+                QuoteBean launchQuote = getRandomQuote(quoteBeanList);
 
-                //TO DO: PUT EXTRA
+                //Setting up intent extra data
+                Intent intent = new Intent(context, QuoteActivity.class);
+                intent.putExtra("categoryExtra", launchQuote.getCategory());
+                intent.putExtra("attributionExtra", launchQuote.getAttribution());
+                intent.putExtra("blurbExtra", launchQuote.getBlurb());
+                intent.putExtra("quoteExtra", launchQuote.getQuote());
+                intent.putExtra("dateExtra", launchQuote.getDate());
+                intent.putExtra("urlExtra",launchQuote.getUrl());
 
-                //context.startActivity(intent);
+                //Launching the quote activity
+                context.startActivity(intent);
             }
         });
 
+        /**
+         * Querying the list of quotes in the current category and updating the list of QuoteBean
+         */
         final Query query = snapshot.getRef().child(categories.get(position));
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -118,11 +142,11 @@ public class CustomViewAdapter extends BaseAdapter {
         });
 
 
-
-
-
-
-
         return rowView;
+    }
+
+    private QuoteBean getRandomQuote(List<QuoteBean> list){
+        int randomIndex = (int) (Math.random() * list.size());
+        return list.get(randomIndex);
     }
 }
