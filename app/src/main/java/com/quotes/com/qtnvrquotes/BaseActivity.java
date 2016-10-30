@@ -55,29 +55,13 @@ public class BaseActivity extends AppCompatActivity {
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        Query query = mDatabase.getReference().child("categories");
-
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String category = getRandomCategory(dataSnapshot);
-                DataSnapshot quotesSnap = dataSnapshot.child(category);
-                randomQuote = getRandomQuote(dataSnapshot, category);
-                Log.i(TAG, "random QuoteBean object fetched: " + randomQuote);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
         return true;
     }
+
+
 
     /**
      * Setting up action on the selection of a menu item
@@ -93,28 +77,35 @@ public class BaseActivity extends AppCompatActivity {
                 startActivity(aboutIntent);
                 return true;
             case R.id.random_menu:
-                //The random category, random quote selected
 
-                if(randomQuote != null){
-                    Intent randomQuoteIntent = new Intent(this, QuoteActivity.class);
-                    randomQuoteIntent.putExtra("categoryExtra", randomQuote.getCategory());
-                    randomQuoteIntent.putExtra("attributionExtra", randomQuote.getAttribution());
-                    randomQuoteIntent.putExtra("blurbExtra", randomQuote.getBlurb());
-                    randomQuoteIntent.putExtra("quoteExtra", randomQuote.getQuote());
-                    randomQuoteIntent.putExtra("dateExtra", randomQuote.getDate());
-                    randomQuoteIntent.putExtra("urlExtra",randomQuote.getUrl());
-                    startActivity(randomQuoteIntent);
+                Query query = mDatabase.getReference().child("categories");
 
-                }
-                else
-                {
-                    //Display the error message
-                    Toast toast = Toast.makeText
-                            (this, getResources().getString(R.string.random_menu_error),
-                                    Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.CENTER, 0,0);
-                    toast.show();
-                }
+                query.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        String category = getRandomCategory(dataSnapshot);
+                        DataSnapshot quotesSnap = dataSnapshot.child(category);
+                        randomQuote = getRandomQuote(dataSnapshot, category);
+                        Log.i(TAG, "random QuoteBean object fetched: " + randomQuote);
+
+                        Intent randomQuoteIntent = new Intent(BaseActivity.this, QuoteActivity.class);
+                        randomQuoteIntent.putExtra("categoryExtra", randomQuote.getCategory());
+                        randomQuoteIntent.putExtra("attributionExtra", randomQuote.getAttribution());
+                        randomQuoteIntent.putExtra("blurbExtra", randomQuote.getBlurb());
+                        randomQuoteIntent.putExtra("quoteExtra", randomQuote.getQuote());
+                        randomQuoteIntent.putExtra("dateExtra", randomQuote.getDate());
+                        randomQuoteIntent.putExtra("urlExtra",randomQuote.getUrl());
+                        startActivity(randomQuoteIntent);
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
 
                 return true;
             case R.id.last_run_menu:
