@@ -1,9 +1,14 @@
 package com.quotes.com.qtnvrquotes;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+/**
+ * Activity class that displays the quote and its related information
+ * @author Thai-Vu Nguyen, Victor Ruggi
+ */
 public class QuoteActivity extends BaseActivity {
 
     private static final String TAG = QuoteActivity.class.getName();
@@ -20,7 +25,6 @@ public class QuoteActivity extends BaseActivity {
         String date = extras.getString("dateExtra", "N/A");
         String url = extras.getString("urlExtra", "N/A");
 
-
         Log.i(TAG, "Received category - " + category);
         Log.i(TAG, "Received quote - " + quote);
         Log.i(TAG, "Received blurb - " + blurb);
@@ -28,5 +32,21 @@ public class QuoteActivity extends BaseActivity {
         Log.i(TAG, "Received date - " + date);
         Log.i(TAG, "Received url - " + url);
 
+        //TO DO: Link to the activity_quote UI's TextView objects
+        //TO DO: Display those quote fields to the TextView objects
+
+        SharedPreferences pref = getSharedPreferences("EvilQuotes", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+
+        editor.putString("categoryPrefs", category);
+        editor.putString("quotePrefs", quote);
+        editor.putString("blurbPrefs", blurb);
+        editor.putString("attributionPrefs", attribution);
+        editor.putString("datePrefs", date);
+        editor.putString("urlPrefs", url);
+        editor.commit();
+
     }
+
+
 }

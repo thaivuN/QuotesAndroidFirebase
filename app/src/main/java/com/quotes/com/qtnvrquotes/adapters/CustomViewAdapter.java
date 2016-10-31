@@ -28,8 +28,10 @@ import java.util.Map;
 import java.util.Random;
 
 /**
+ * An adapter that will load a ListView in the UI and set the appropriate onClick() listener
  *
- * Created by Thai-Vu Nguyen on 10/24/2016.
+ * @author Thai-Vu Nguyen, Victor Ruggi
+ * @version 10/30/2016
  */
 
 public class CustomViewAdapter extends BaseAdapter {
@@ -68,6 +70,13 @@ public class CustomViewAdapter extends BaseAdapter {
         return position;
     }
 
+    /**
+     * Loads one row of the ListView
+     * @param position int
+     * @param convertView View
+     * @param parent ViewGroup
+     * @return View
+     */
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 

@@ -29,7 +29,8 @@ import java.util.Queue;
 /**
  * Base Class to give basic functionality to all Activities.
  * Will give activities that extends this Activity class a common menu
- * Created by Thai-Vu Nguyen on 10/26/2016.
+ * @author Thai-Vu Nguyen, Victor Ruggi
+ * @version 10/30/2016
  */
 public class BaseActivity extends AppCompatActivity {
 
@@ -39,6 +40,10 @@ public class BaseActivity extends AppCompatActivity {
     protected FirebaseDatabase mDatabase;
     protected QuoteBean randomQuote;
 
+    /**
+     * onCreate(Bundle bundle) lifecycle method
+     * @param bundle Bundle
+     */
     @Override
     protected void onCreate(Bundle bundle){
         super.onCreate(bundle);
@@ -49,7 +54,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * Inflate the menu
+     * Loads the menu in the UI to all Activities that extends this class
      * @param menu Menu
      * @return boolean
      */
@@ -72,43 +77,63 @@ public class BaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.about_menu:
+                Log.i(TAG, "Menu Item: About");
+
                 //The about option selection
                 Intent aboutIntent = new Intent(this, AboutActivity.class);
+
+                //Launching AboutActivity
                 startActivity(aboutIntent);
                 return true;
             case R.id.random_menu:
 
+                Log.i(TAG, "Menu Item: Random");
                 Query query = mDatabase.getReference().child("categories");
 
+                //Fetch data from FireBase
                 query.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
+                        //Fetching random category
                         String category = getRandomCategory(dataSnapshot);
+
+                        Log.i(TAG, "Random Category chosen: " + category);
+
                         DataSnapshot quotesSnap = dataSnapshot.child(category);
+
+                        //Fetching the random QuoteBean
                         randomQuote = getRandomQuote(dataSnapshot, category);
                         Log.i(TAG, "random QuoteBean object fetched: " + randomQuote);
 
                         Intent randomQuoteIntent = new Intent(BaseActivity.this, QuoteActivity.class);
+
+                        //Setting up Intent extras
                         randomQuoteIntent.putExtra("categoryExtra", randomQuote.getCategory());
                         randomQuoteIntent.putExtra("attributionExtra", randomQuote.getAttribution());
                         randomQuoteIntent.putExtra("blurbExtra", randomQuote.getBlurb());
                         randomQuoteIntent.putExtra("quoteExtra", randomQuote.getQuote());
                         randomQuoteIntent.putExtra("dateExtra", randomQuote.getDate());
                         randomQuoteIntent.putExtra("urlExtra",randomQuote.getUrl());
+
+                        //Launching QuoteActivity with the random Quote
                         startActivity(randomQuoteIntent);
 
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-
+                        Log.e(TAG, "onCancelled called - Unexpected Error ");
+                        Log.e(TAG, "Code : " + databaseError.getCode()
+                                + " - Details : " + databaseError.getDetails()
+                                + " - Message : " + databaseError.getMessage()
+                        );
                     }
                 });
 
-
                 return true;
             case R.id.last_run_menu:
+                Log.i(TAG, "Menu Item: Last Run");
                 //The last quote chosen Option
                 SharedPreferences sharedPreferences = getSharedPreferences("EvilQuotes", MODE_PRIVATE);
                 if (sharedPreferences.contains("categoryPrefs")) {
@@ -125,7 +150,8 @@ public class BaseActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    //Display the error message
+                    //Could happen if QuoteActivity was never launched by the user
+                    //Display a message
                     Toast toast = Toast.makeText
                             (this, getResources().getString(R.string.last_run_error),
                                     Toast.LENGTH_SHORT);
