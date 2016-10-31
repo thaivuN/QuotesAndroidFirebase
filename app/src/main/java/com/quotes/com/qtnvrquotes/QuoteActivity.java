@@ -1,6 +1,9 @@
 package com.quotes.com.qtnvrquotes;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,6 +37,26 @@ public class QuoteActivity extends BaseActivity {
 
         //TO DO: Link to the activity_quote UI's TextView objects
         //TO DO: Display those quote fields to the TextView objects
+
+
+        //Need the handle to the attribution TextView, put the AlertDialog code
+        // on that Textview's onclick.
+
+        //Setting the AlertDialog on the attribution to get the blurb
+        /**
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Blurb").setMessage(blurb);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //DOES NOTHING
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        */
+
+        
 
         SharedPreferences pref = getSharedPreferences("EvilQuotes", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
