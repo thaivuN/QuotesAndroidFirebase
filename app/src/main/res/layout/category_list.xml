@@ -10,5 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/category_LV_size"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textAllCaps="true"/>
 </LinearLayout>

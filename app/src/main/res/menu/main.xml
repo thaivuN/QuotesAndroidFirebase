@@ -7,12 +7,12 @@
         tools:ignore="AppCompatResource"></item>
     <item
         android:id="@+id/random_menu"
-        android:title=""
+        android:title="@string/menu_string_random"
         android:showAsAction="ifRoom"
         tools:ignore="AppCompatResource"></item>
     <item
         android:id="@+id/last_run_menu"
-        android:title=""
+        android:title="@string/menu_string_last"
         android:showAsAction="ifRoom"
         tools:ignore="AppCompatResource"></item>
 
