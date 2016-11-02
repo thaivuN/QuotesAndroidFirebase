@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about_page_name">About</string>
+    <string name="about_string">This application allows you to search through a FireBase database and get quotes from
+                                your favorite movies, TV shows, writers, people and songs.\n\nThis app was coded
+                                by Victor Ruggi and Thai Vu Nguyen.</string>
 </resources>

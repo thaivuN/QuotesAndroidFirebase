@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="quote_page_name">Quotes</string>
+
+    <string name="quote_string_title">Your Quote</string>
+    <string name="quote_whosaidit_title">Person attributed to</string>
+    <string name="quote_blurb_title">Blurb</string>
+    <string name="quote_added_title">Added</string>
+    <string name="quote_link_title">Hyperlink</string>
+
 </resources>
