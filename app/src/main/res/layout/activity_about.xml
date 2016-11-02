@@ -9,6 +9,36 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.quotes.com.qtnvrquotes.AboutActivity">
+    tools:context="com.quotes.com.qtnvrquotes.AboutActivity"
+    android:weightSum="1">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about_string"
+        android:id="@+id/textView"
+        android:textSize="20dp"
+        android:textColor="#de0400"
+        android:textStyle="bold" />
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="65dp"
+            android:layout_height="113dp"
+            android:id="@+id/victor"
+            android:src="@drawable/victor"
+            android:layout_weight="0.14" />
+
+        <ImageView
+            android:layout_width="139dp"
+            android:layout_height="106dp"
+            android:id="@+id/thai"
+            android:src="@drawable/thai"
+            android:layout_weight="2.10" />
+
+    </LinearLayout>
 </LinearLayout>
