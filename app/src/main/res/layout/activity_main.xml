@@ -17,6 +17,7 @@
         android:textSize="@dimen/large_text"
         android:layout_gravity="center"
         android:textStyle="bold"
+        android:layout_marginBottom="@dimen/add20DP"
 
         />
 

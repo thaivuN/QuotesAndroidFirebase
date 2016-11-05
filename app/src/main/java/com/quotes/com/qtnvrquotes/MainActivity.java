@@ -41,20 +41,22 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         categories = new ArrayList<>();
         setContentView(R.layout.activity_main);
-
         setUpAuthenticationListener();
-        if (mFirebaseUser == null)
-            performBackEndLogin();
+
     }
 
     /**
      * onStart() lifecycle method
+     * Will perform Login and loading of the category
      */
     @Override
     public void onStart(){
         Log.i(TAG, "onStart() triggered");
         super.onStart();
-        loadCategories();
+        if (mFirebaseUser == null)
+            performBackEndLogin();
+        else
+            loadCategories();
 
     }
 
@@ -92,8 +94,10 @@ public class MainActivity extends BaseActivity {
                     Log.i(TAG, "back-end sign in failed");
 
                 }
-                else
+                else {
                     Log.i(TAG, "back-end sign in succeeded");
+                    loadCategories();
+                }
             }
         });
 
@@ -144,9 +148,14 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    /**
+     * Will log out of the account
+     */
     @Override
     public void onStop(){
+        mFirebaseAuth.signOut();
         super.onStop();
+
     }
 
 

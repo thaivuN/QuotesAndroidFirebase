@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="quote_category_title">Category</string>
     <string name="quote_string_title">Your Quote</string>
     <string name="quote_whosaidit_title">Person attributed to</string>
     <string name="quote_blurb_title">Blurb</string>

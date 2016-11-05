@@ -14,17 +14,38 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/quote_category_title"
+        android:id="@+id/quote_category_title"
+        android:textColor="#16bd00"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/quote_category"
+        android:textSize="20sp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/quote_string_title"
         android:id="@+id/quote_text_title"
         android:textColor="#ec0000"
         android:textStyle="bold"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/quote_text"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textStyle="italic"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,28 +54,16 @@
         android:id="@+id/quote_whosaidit_title"
         android:textColor="#0008ff"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/quote_whosaidit"
-        android:textSize="20sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/quote_blurb_title"
-        android:id="@+id/quote_blurb_title"
-        android:textColor="#16bd00"
         android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/quote_blurb"
-        android:textSize="20sp" />
+        android:layout_gravity="center"
+        android:textAlignment="center"/>
 
     <TextView
         android:layout_width="wrap_content"

@@ -11,5 +11,9 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/category_LV_size"
         android:textStyle="bold"
-        android:textAllCaps="true"/>
+        android:textAllCaps="true"
+        android:paddingBottom="@dimen/add20DP"
+        android:paddingTop="@dimen/add20DP"
+        android:textColor="@color/categoryColor"
+        />
 </LinearLayout>

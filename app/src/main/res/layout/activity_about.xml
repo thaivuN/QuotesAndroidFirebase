@@ -19,26 +19,29 @@
         android:id="@+id/textView"
         android:textSize="20dp"
         android:textColor="#de0400"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginBottom="@dimen/add20DP"/>
 
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:orientation="vertical"
+        android:weightSum="2">
 
         <ImageView
-            android:layout_width="65dp"
-            android:layout_height="113dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
             android:id="@+id/victor"
             android:src="@drawable/victor"
-            android:layout_weight="0.14" />
+            android:layout_weight="1"
+            android:layout_gravity="center"/>
 
         <ImageView
-            android:layout_width="139dp"
-            android:layout_height="106dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
             android:id="@+id/thai"
             android:src="@drawable/thai"
-            android:layout_weight="2.10" />
+            android:layout_weight="1"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 </LinearLayout>
