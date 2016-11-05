@@ -148,15 +148,15 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    /**
-     * Will log out of the account
-     */
     @Override
     public void onStop(){
         super.onStop();
 
     }
 
+    /**
+     * Will log out account
+     */
     @Override
     public void onDestroy(){
         mFirebaseAuth.signOut();
