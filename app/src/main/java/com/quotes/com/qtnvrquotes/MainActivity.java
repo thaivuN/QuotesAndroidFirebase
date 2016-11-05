@@ -153,9 +153,14 @@ public class MainActivity extends BaseActivity {
      */
     @Override
     public void onStop(){
-        mFirebaseAuth.signOut();
         super.onStop();
 
+    }
+
+    @Override
+    public void onDestroy(){
+        mFirebaseAuth.signOut();
+        super.onDestroy();
     }
 
 
